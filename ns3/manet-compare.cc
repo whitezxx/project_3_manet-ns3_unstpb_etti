@@ -144,12 +144,18 @@ main(int argc, char* argv[])
     cmd.AddValue("speed", "RandomWaypoint speed in m/s (0 = static)", speed);
     cmd.AddValue("run", "RngRun number (seed index)", run);
     cmd.AddValue("time", "simulated time in s", totalTime);
+    cmd.AddValue("pause", "RandomWaypoint pause time in s", pause);
     cmd.AddValue("flows", "number of CBR flows", nFlows);
     cmd.AddValue("pktSize", "packet size in bytes", pktSize);
     cmd.AddValue("pktRate", "packets per second per flow", pktRate);
     cmd.AddValue("range", "radio range in m", range);
     cmd.AddValue("outDir", "output directory (must exist)", outDir);
     cmd.Parse(argc, argv);
+
+    if(pause < 0.0)
+    {
+        NS_FATAL_ERROR("pause time must be >= 0");
+    }
 
     auto wallStart = std::chrono::steady_clock::now();
 
@@ -170,6 +176,7 @@ main(int argc, char* argv[])
     g_txLog << "flow,seq,t_tx,bytes\n";
     g_rxLog << "flow,seq,t_tx,t_rx,delay_ms,bytes\n";
     g_ctrlLog << "t,node,port,bytes\n";
+
 
     // ---------------- nodes
     NodeContainer nodes;

@@ -1,0 +1,4 @@
+# keep Unix line endings even if someone edits the files from Windows
+* text=auto eol=lf
+*.png binary
+*.pdf binary

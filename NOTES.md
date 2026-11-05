@@ -6,7 +6,7 @@
 |-|-|-|-|
 |2026-11-05|Lupu Gabriel-Iriel|Custom CBR sender (`CbrSend`) instead of `OnOffApplication`|With OnOff, OLSR offered 3431 packets vs 3954 for AODV/DSDV: OnOff stops generating packets while the source has no route, so the offered load depended on the protocol. CbrSend offers exactly 2 packets/s per flow for every protocol; packets without a route at the source are counted in `src\_drops`.|
 |2026-11-05|Lupu Gabriel-Irinel|Fixed RNG streams (`AssignStreams`, `SetStream`)|Same positions, Wi-Fi randomness and source/sink pairs for all protocols at the same `--run`. Verified: `diff` of `\_flows.csv` is empty.|
-||Ermilios Ilias-Alexandros|Warm-up 20 s (guideline: 10-20 % of the run = 20-40 s)|To be confirmed: DSDV still loses packets until \~60 s. Compare `--warmup 20` and `--warmup 40` and decide.|
+|2026-11-06|Ermilios Ilias-Alexandros|Warm-up 20 s (guideline: 10-20 % of the run = 20-40 s)|To be confirmed: DSDV still loses packets until \~60 s. Compare `--warmup 20` and `--warmup 40` and decide.|
 
 ## Sanity checks (run 1)
 
@@ -44,3 +44,7 @@ DSDV loses 181 in 0-20 s, 57 in 20-40 s, 10 in 40-60 s -> converges more slowly 
 
 
 
+
+
+
+The quick brown fox jumps over the lazy dog

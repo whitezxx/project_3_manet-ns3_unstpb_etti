@@ -1,8 +1,5 @@
 # NOTES -- decisions, sanity checks, measured times
 
-Write here every decision (what, why, who, date). This file becomes the "methodology"
-section of the report and is the best preparation for the Q\&A.
-
 ## Decisions
 
 |Date|Who|Decision|Why|

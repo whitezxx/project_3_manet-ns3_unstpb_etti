@@ -99,7 +99,7 @@ def main():
 
     # 3) PDR plot
     fig, ax = plt.subplots(figsize=(6, 4))
-    bars = ax.bar(labels, mean["pdr"], color=["tab:blue", "tab:orange", "tab:green"][: len(labels)])
+    bars = ax.bar(labels, mean["pdr"], color = ['#FFFF00', '#D62728', '#2CA02C'][: len(labels)])
     ax.bar_label(bars, fmt="%.1f %%")
     ax.set_ylabel("Packet delivery ratio (%)")
     ax.set_ylim(0, 105)

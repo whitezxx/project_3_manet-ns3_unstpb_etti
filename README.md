@@ -38,8 +38,8 @@ sudo apt install python3-pandas python3-numpy python3-matplotlib
 ## Reproduce the midterm result (one command)
 
 ```bash
-git clone https://github.com/whitezxx/project_3_manet-ns3_unstpb_etti.git manet-ns3
-cd manet-ns3
+git clone https://github.com/whitezxx/project_3_manet-ns3_unstpb_etti.git project_3_manet-ns3_unstpb_etti
+cd project_3_manet-ns3_unstpb_etti
 NS3_DIR=~/project_dc/ns-3-dev ./run_midterm.sh
 ```
 

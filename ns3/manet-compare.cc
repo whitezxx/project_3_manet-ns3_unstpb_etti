@@ -1,8 +1,6 @@
 /*
  * manet-compare.cc  --  Project 3: AODV vs OLSR vs DSDV in ns-3 (ns-3.48)
  *
- * Place in:  <ns-3-dir>/scratch/manet-compare.cc
- * Run:       ./ns3 run "manet-compare --protocol=aodv --nodes=50 --speed=0 --run=1 --outDir=results"
  *
  * Outputs (in --outDir, which must exist):
  *   <tag>_tx.csv        one line per data packet sent      (flow, seq, t_tx, bytes)
@@ -54,15 +52,10 @@ uint64_t g_appTx = 0;
 uint64_t g_appRx = 0;
 uint64_t g_ctrlPkts = 0;
 uint64_t g_ctrlBytes = 0;
-uint64_t g_srcDrops = 0; // packets the source could not send (no route at the source)
+uint64_t g_srcDrops = 0; 
 
 // Constant-bit-rate sender. One packet every `interval`, whatever the routing state.
-// Why not OnOffApplication: when Send() fails (no route yet, typical for OLSR/DSDV at the
-// source) OnOff caches the packet and stops generating new ones, so the offered load would
-// differ between protocols. Here every scheduled packet is counted as offered; if the
-// source has no route it is simply lost (and counted in g_srcDrops).
-void
-CbrSend(uint32_t flowId, Ptr<Socket> sock, uint32_t seq, uint32_t size, Time interval, Time stop)
+void CbrSend(uint32_t flowId, Ptr<Socket> sock, uint32_t seq, uint32_t size, Time interval, Time stop)
 {
     SeqTsSizeHeader h; // timestamp = Simulator::Now(), set by the constructor
     h.SetSeq(seq);
@@ -83,8 +76,7 @@ CbrSend(uint32_t flowId, Ptr<Socket> sock, uint32_t seq, uint32_t size, Time int
 }
 
 // PacketSink received a data packet; the header carries seq and send time
-void
-AppRx(uint32_t flowId,
+void AppRx(uint32_t flowId,
       Ptr<const Packet> p,
       const Address& /*from*/,
       const Address& /*to*/,
@@ -98,8 +90,7 @@ AppRx(uint32_t flowId,
 
 // Every IPv4 packet transmitted by any node (originated or forwarded).
 // A packet whose UDP destination port is a routing port is a control packet.
-void
-IpTx(Ptr<const Packet> p, Ptr<Ipv4> ipv4, uint32_t /*iface*/)
+void IpTx(Ptr<const Packet> p, Ptr<Ipv4> ipv4, uint32_t /*iface*/)
 {
     Ptr<Packet> copy = p->Copy();
     Ipv4Header ip;
@@ -121,8 +112,7 @@ IpTx(Ptr<const Packet> p, Ptr<Ipv4> ipv4, uint32_t /*iface*/)
 }
 } // namespace
 
-int
-main(int argc, char* argv[])
+int main(int argc, char* argv[])
 {
     // ---------------- parameters (defaults = scenario defaults of the guidelines)
     std::string protocol = "aodv";

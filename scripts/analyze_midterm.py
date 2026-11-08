@@ -24,7 +24,6 @@ matplotlib.use("Agg")  # write PNG files, no window needed
 import matplotlib.pyplot as plt
 
 PROTOCOLS = ["aodv", "olsr", "dsdv"]
-# file names look like: aodv_n50_s0_r1_summary.csv
 TAG = re.compile(r"(?P<protocol>[a-z]+)_n(?P<nodes>\d+)_s(?P<speed>[\d.]+)_r(?P<run>\d+)_summary\.csv$")
 
 
